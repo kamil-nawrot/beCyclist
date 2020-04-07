@@ -17,6 +17,6 @@ public class Application {
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return args -> System.out.println("Spring Boot Application started");
+        return args -> System.out.println("Spring Boot Application populated with initial data and started");
     }
 }

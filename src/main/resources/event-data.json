@@ -1,0 +1,32 @@
+[
+  {
+    "_class": "com.becyclist.model.Event",
+    "name": "Six Gap Century & Three Gap Fifty",
+    "date": "2020-04-25",
+    "time": "08:00:00"
+  },
+  {
+    "_class": "com.becyclist.model.Event",
+    "name": "2020 XTERRA Croatia Off-Road MTB Race",
+    "date": "2020-06-11",
+    "time": "11:30:00"
+  },
+  {
+    "_class": "com.becyclist.model.Event",
+    "name": "16th Annual Mayhaw Century Bike Ride",
+    "date": "2020-04-29",
+    "time": "07:00:00"
+  },
+  {
+    "_class": "com.becyclist.model.Event",
+    "name": "Giro Rosa 2020",
+    "date": "2020-07-26",
+    "time": "08:30:00"
+  },
+  {
+    "_class": "com.becyclist.model.Event",
+    "name": "Sudety MTB Challenge 2020",
+    "date": "2020-07-27",
+    "time": "09:45:00"
+  }
+]
