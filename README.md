@@ -18,7 +18,11 @@ To run Spring Boot application in the development mode, you can simply compile i
     
 If everything goes right, server will be working and listening on `localhost:8080`.
 
-User interface requires another server to run on. Angular application can be build using tools provided by your IDE or Angular CLI command:
+User interface requires another server to run on. To make it work, first you need to move to the root directory of the Angular app, which is `src/main/webapp` and from there install all necessary dependencies by running:
+
+    > npm install
+    
+Angular application can be build using tools provided by your IDE or Angular CLI command:
 
     > ng serve --open
 
