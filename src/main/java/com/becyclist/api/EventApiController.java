@@ -3,12 +3,14 @@ package com.becyclist.api;
 import com.becyclist.model.Event;
 import com.becyclist.service.EventService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -38,7 +40,13 @@ public class EventApiController implements EventApi {
         return "Hello world from Spring Boot Web Application!";
     }
 
-    public ResponseEntity<List<Event>> findAllEvents(String name, String dateFrom, String dateTo) {
+    public ResponseEntity<List<Event>> findAllEvents(
+            @ApiParam(value = "") @Valid @RequestParam(value = "name", required = false)
+                    String name,
+            @ApiParam(value = "") @Valid @RequestParam(value = "dateFrom", required = false)
+                    String dateFrom,
+            @ApiParam(value = "") @Valid @RequestParam(value = "dateTo", required = false)
+                    String dateTo) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-d");
         LocalDate localDateFrom = dateFrom != null ? LocalDate.parse(dateFrom, formatter) : null;
@@ -49,7 +57,7 @@ public class EventApiController implements EventApi {
         return ResponseEntity.ok(events);
     }
 
-    public ResponseEntity<Event> addEvent(@Valid @RequestBody Event body) {
+    public ResponseEntity<Event> addEvent(@ApiParam(value = "", required = true) @Valid @RequestBody Event body) {
 
         return ResponseEntity.ok(eventService.addEvent(body));
     }
