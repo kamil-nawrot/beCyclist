@@ -9,15 +9,18 @@ import {SearchService} from '../../services/search.service';
 })
 export class ResultsGridComponent implements OnInit {
 
-  public searchResults: IEvent[];
+  public searchResults: IEvent[] = [];
   public queryParams: {};
+  keys = Object.keys;
 
   constructor(private searchService: SearchService) {
   }
 
   ngOnInit(): void {
-    this.searchResults = this.searchService.searchResults;
+    this.searchResults = this.searchService.searchResults || [];
     this.queryParams = this.searchService.queryParams;
+
+    console.log(this.queryParams);
   }
 
 }

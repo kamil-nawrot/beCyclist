@@ -26,3 +26,15 @@
 .main-menu__item:hover {
   background-color: #BCBCBC;
 }
+
+.item--admin {
+  position: absolute;
+  right: 50px;
+  top: -40px;
+  width: 120px;
+  height: 40px;
+  background: white;
+  line-height: 40px;
+  font-weight: 700;
+  cursor: pointer;
+}

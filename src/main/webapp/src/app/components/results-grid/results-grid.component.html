@@ -1,6 +1,10 @@
-<mat-chip-list>
-  <mat-chip></mat-chip>
-</mat-chip-list>
+<section class="filter-list-wrapper">
+  <mat-chip-list class='filter-list'>
+    <mat-chip *ngFor="let param of keys(queryParams)" class="filter" disabled>
+      {{param}}: {{queryParams[param]}}
+    </mat-chip>
+  </mat-chip-list>
+</section>
 <main class="grid-list-flex" *ngIf="searchResults.length > 0">
   <mat-card class="grid-list-flex__tile" *ngFor="let result of searchResults">
     <img mat-card-image src="assets/img/event-card-image.jpg" alt="single event image"/>

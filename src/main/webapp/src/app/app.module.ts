@@ -21,6 +21,7 @@ import {MatCardModule} from '@angular/material/card';
 import {HeaderComponent} from './components/header/header.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {MatChipsModule} from '@angular/material/chips';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 
 const appRoutes: Routes = [
   {path: 'search', component: SearchFormComponent},
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     SearchFormComponent,
     ResultsGridComponent,
     HeaderComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
