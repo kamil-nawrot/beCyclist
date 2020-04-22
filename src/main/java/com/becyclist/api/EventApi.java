@@ -2,25 +2,23 @@ package com.becyclist.api;
 
 import com.becyclist.model.Event;
 import io.swagger.annotations.*;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.reflections.Reflections.log;
+import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Api(value = "event")
 public interface EventApi {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @ApiOperation(value = "Find all events available in the system", nickname = "getEvents",
-                  notes = "Filtering parameters shall be added as request query params.",
-                  tags = {"events"}, response = Event.class, responseContainer = "List")
+            notes = "Filtering parameters shall be added as request query params.",
+            tags = {"events"}, response = Event.class, responseContainer = "List")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK: All events matching given criteria returned", response = Event.class, responseContainer = "List"),
             @ApiResponse(code = 400, message = "Bad Request: Something went wrong", response = Error.class),
@@ -46,11 +44,29 @@ public interface EventApi {
     );
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @ApiOperation(value = "Create new event", nickname = "createEvent", notes = "This can be done only by verified organizer", tags={"events"})
+    @ApiOperation(value = "Create new event", nickname = "createEvent", notes = "This can be done only by verified organizer", tags = {"events"})
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "OK: New event was created"),
             @ApiResponse(code = 400, message = "Bad Request: Something went wrong", response = Error.class),
-            @ApiResponse(code = 403, message = "Unauthorized: No permission to perform this action", response = Error.class) })
+            @ApiResponse(code = 403, message = "Unauthorized: No permission to perform this action", response = Error.class)})
     @RequestMapping(value = "events", consumes = "application/json", method = POST)
-    ResponseEntity<Event> addEvent(@ApiParam(value = "" ,required=true ) @Valid @RequestBody Event body);
+    ResponseEntity<Event> addEvent(@ApiParam(value = "", required = true) @Valid @RequestBody Event body);
+
+    @ApiOperation(value = "Return event with specific ID", nickname = "getEvent", notes = "", tags = {"events"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK: Event with given ID returned"),
+            @ApiResponse(code = 400, message = "Bad Request: Something went wrong", response = Error.class),
+            @ApiResponse(code = 404, message = "Not Found: Requested resource was not found", response = Error.class)})
+    @RequestMapping(value = "/events/{eventId}", produces = {"application/json"}, method = GET)
+    ResponseEntity<Event> getEvent(@ApiParam(value = "", required = true) @PathVariable("eventId") Long eventId);
+
+    @ApiOperation(value = "Update existing event details", nickname = "updateEvent", notes = "This can be done only by verified organizer", tags = {"events",})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK: New event was updated"),
+            @ApiResponse(code = 400, message = "Bad Request: Something went wrong", response = Error.class),
+            @ApiResponse(code = 403, message = "Unauthorized: No permission to perform this action", response = Error.class),
+            @ApiResponse(code = 404, message = "Not Found: Requested resource was not found", response = Error.class)})
+    @RequestMapping(value = "/events", consumes = {"application/json", "application/xml"}, method = PUT)
+    ResponseEntity<Event> updateEvent(@ApiParam(value = "", required = true) @Valid @RequestBody Event event);
+
 }

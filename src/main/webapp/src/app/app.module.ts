@@ -22,10 +22,12 @@ import {HeaderComponent} from './components/header/header.component';
 import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 const appRoutes: Routes = [
   {path: 'search', component: SearchFormComponent},
   {path: 'results', component: ResultsGridComponent},
+  {path: 'admin', component: AdminPanelComponent},
   {path: '', redirectTo: '/search', pathMatch: 'full'}
 ];
 
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
     MatGridListModule,
     MatCardModule,
     MatChipsModule,
+    MatExpansionModule,
   ],
   providers: [MomentDateAdapter],
   bootstrap: [AppComponent]

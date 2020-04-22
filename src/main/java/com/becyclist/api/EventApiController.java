@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -60,5 +61,20 @@ public class EventApiController implements EventApi {
     public ResponseEntity<Event> addEvent(@ApiParam(value = "", required = true) @Valid @RequestBody Event body) {
 
         return ResponseEntity.ok(eventService.addEvent(body));
+    }
+
+    @Override
+    public ResponseEntity<Event> getEvent(Long eventId) {
+        try {
+            return ResponseEntity.ok(eventService.findEvent(eventId));
+        }
+        catch (Exception exception) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public ResponseEntity<Event> updateEvent(@Valid Event event) {
+        return null;
     }
 }
