@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,6 +29,11 @@ public class EventServiceImpl implements EventService {
         else foundDates = eventRepository.findAll();
 
         return foundNames.stream().filter(foundDates::contains).collect(Collectors.toList());
+    }
+
+    @Override
+    public Event findEvent(Long eventId) {
+        return eventRepository.getOne(eventId);
     }
 
     @Override
