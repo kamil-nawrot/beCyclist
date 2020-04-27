@@ -10,14 +10,17 @@ import org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass=true)
 @EnableSpringConfigured
-@ComponentScan(basePackages = { "aspects", "com.becyclist.model" })
+@ComponentScan(basePackages = { "aspects", "com.becyclist.model", "com.becyclist.api"})
 public class AspectConfig {
+
+	@Bean
+	public StatsAspect statsAspect() {
+		return Aspects.aspectOf(StatsAspect.class);
+	}
 
 	@Bean
 	public InstrumentationLoadTimeWeaver loadTimeWeaver()  throws Throwable {
 	    InstrumentationLoadTimeWeaver loadTimeWeaver = new InstrumentationLoadTimeWeaver();
 	    return loadTimeWeaver;
 	}
-	
-	
 }

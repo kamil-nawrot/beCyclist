@@ -8,12 +8,14 @@
 			encompass any class that wants to utilize the aspects, and does not need 
 			to encompass the aspects themselves. -->
 		<include within="com.becyclist.model.*" />
+		<include within="com.becyclist.api.*" />
 		<include within="aspects.*" />
 	</weaver>
 
 	<aspects>
 		<!-- declare aspects to the weaver -->
 		<aspect name="aspects.MyAspect" />
+		<aspect name="aspects.StatsAspect" />
 	</aspects>
 
 </aspectj>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class MyAspect {
+
     @Around("execution(* com.becyclist.model.Event.*(..))")
     public Object doThing(final ProceedingJoinPoint thisJoinPoint) throws Throwable {
         final String joinPointName = thisJoinPoint.getThis().getClass().getSimpleName() + "." + thisJoinPoint.getSignature().getName() + "()";
