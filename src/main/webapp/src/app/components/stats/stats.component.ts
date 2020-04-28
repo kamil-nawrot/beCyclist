@@ -10,6 +10,7 @@ import IStats from "../../models/stats";
 export class StatsComponent implements OnInit {
 
   statsResults: IStats;
+  keys = Object.keys;
 
   constructor(private statsService: StatsService) {
   }
@@ -17,6 +18,9 @@ export class StatsComponent implements OnInit {
   ngOnInit(): void {
     this.statsService.getStats().subscribe(response => {
       this.statsResults = response;
+      for(let field in this.statsResults.fields) {
+        this.statsResults.fields[field] = (Math.round(this.statsResults.fields[field] * 10000) * 100) / 10000;
+      }
     })
   }
 

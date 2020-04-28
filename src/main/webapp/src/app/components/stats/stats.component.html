@@ -1,4 +1,5 @@
 <mat-list class="mat-list" *ngIf="statsResults">
+  <div mat-subheader>General</div>
   <mat-list-item>
     Total number of active events:
     <span class="mat-list-value">{{statsResults.numberOfEvents}}</span>
@@ -10,5 +11,11 @@
   <mat-list-item>
     Last searched term:
     <span class="mat-list-value">{{statsResults.lastSearchTerm}}</span>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  <div mat-subheader>Fields usage</div>
+  <mat-list-item *ngFor="let field of keys(statsResults.fields)">
+    {{field}}:
+    <span class="mat-list-value">{{(statsResults.fields[field])}}%</span>
   </mat-list-item>
 </mat-list>

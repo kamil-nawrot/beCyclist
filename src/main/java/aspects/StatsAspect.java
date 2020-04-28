@@ -52,6 +52,8 @@ public class StatsAspect {
 
         System.out.println(Arrays.toString(fieldsCounter));
 
+        statsStorage.setFieldsCounter(fieldsCounter);
+
         return retVal;
     }
 
