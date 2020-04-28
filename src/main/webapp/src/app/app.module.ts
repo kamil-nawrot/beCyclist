@@ -24,6 +24,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {StatsComponent} from "./components/stats/stats.component";
+import {MatListModule} from "@angular/material/list";
 
 const appRoutes: Routes = [
   {path: 'search', component: SearchFormComponent},
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatChipsModule,
     MatExpansionModule,
+    MatListModule,
   ],
   providers: [MomentDateAdapter],
   bootstrap: [AppComponent]
