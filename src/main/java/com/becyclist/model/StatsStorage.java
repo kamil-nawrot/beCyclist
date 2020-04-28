@@ -17,6 +17,8 @@ public class StatsStorage {
 
     private Integer numberOfSearchs;
 
+    private String lastSearchTerm;
+
     public Integer getNumberOfEvents() {
         return numberOfEvents;
     }
@@ -30,4 +32,12 @@ public class StatsStorage {
     public Integer getNumberOfSearchs() { return numberOfSearchs; }
 
     public void increaseNumberOfSearchs() { this.numberOfSearchs++; }
+
+    public String getLastSearchTerm() {
+        return lastSearchTerm;
+    }
+
+    public void setLastSearchTerm(String lastSearchTerm) {
+        this.lastSearchTerm = lastSearchTerm;
+    }
 }
