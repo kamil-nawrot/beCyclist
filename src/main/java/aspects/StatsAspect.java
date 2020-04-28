@@ -34,7 +34,7 @@ public class StatsAspect {
         String searchTerm = (String)thisJoinPoint.getArgs()[0];
         System.out.println(searchTerm);
 
-        statsStorage.setLastSearchTerm(searchTerm);
+        if (searchTerm != null) statsStorage.setLastSearchTerm(searchTerm);
 
         System.out.println("Last term search aspect - after");
         return retVal;
