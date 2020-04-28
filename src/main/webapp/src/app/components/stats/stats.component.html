@@ -1,4 +1,4 @@
-<mat-list class="mat-list">
+<mat-list class="mat-list" *ngIf="statsResults">
   <mat-list-item>
     Total number of active events:
     <span class="mat-list-value">{{statsResults.numberOfEvents}}</span>
