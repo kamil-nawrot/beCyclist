@@ -14,7 +14,6 @@
 
 	<aspects>
 		<!-- declare aspects to the weaver -->
-		<aspect name="aspects.MyAspect" />
 		<aspect name="aspects.StatsAspect" />
 	</aspects>
 
