@@ -5,6 +5,7 @@ public class StatsStorage {
     private static final StatsStorage storage = new StatsStorage();
 
     private StatsStorage() {
+        this.numberOfSearchs = 0;
         this.numberOfEvents = 5;
     };
 
@@ -13,6 +14,8 @@ public class StatsStorage {
     }
 
     private Integer numberOfEvents;
+
+    private Integer numberOfSearchs;
 
     public Integer getNumberOfEvents() {
         return numberOfEvents;
@@ -23,4 +26,8 @@ public class StatsStorage {
     public void decreaseNumberOfEvents() {
         this.numberOfEvents--;
     }
+
+    public Integer getNumberOfSearchs() { return numberOfSearchs; }
+
+    public void increaseNumberOfSearchs() { this.numberOfSearchs++; }
 }

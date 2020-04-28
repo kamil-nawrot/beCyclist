@@ -19,10 +19,9 @@ public class StatsAspect {
         statsStorage.increaseNumberOfEvents();
     }
 
-    @Around("execution(* com.becyclist.service.EventServiceImpl.findAllEvents(..))")
-    public Object allEvents (final ProceedingJoinPoint thisJoinPoint) throws Throwable {
-        Object retVal = thisJoinPoint.proceed();
-        System.out.println("test2");
-        return retVal;
+    @After("execution(* com.becyclist.api.EventApiController.findAllEvents(..))")
+    public void allEvents () throws Throwable {
+        System.out.println("Search performed!");
+        statsStorage.increaseNumberOfSearchs();
     }
 }
