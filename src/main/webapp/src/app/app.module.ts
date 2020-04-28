@@ -23,6 +23,7 @@ import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import {MatChipsModule} from '@angular/material/chips';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { StatsComponent } from './components/stats/stats.component';
 
 const appRoutes: Routes = [
   {path: 'search', component: SearchFormComponent},
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     ResultsGridComponent,
     HeaderComponent,
     MainMenuComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
