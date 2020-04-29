@@ -27,7 +27,7 @@ public class StatsStorage {
         put("name", 0.00);
         put("dateFrom", 0.00);
         put("dateTo", 0.00);
-    }};;
+    }};
 
     public Integer getNumberOfEvents() {
         return numberOfEvents;
@@ -58,8 +58,8 @@ public class StatsStorage {
     }
 
     public void setFieldsCounter(int[] fieldsCounter) {
-        for(int i=0; i<fieldsCounter.length; i++) {
-            if(fieldsCounter[i] == 1)   this.fieldsCounter[i]++;
+        for (int i = 0; i < fieldsCounter.length; i++) {
+            if (fieldsCounter[i] == 1) this.fieldsCounter[i]++;
         }
 
         HashMap<String, Double> fields = new HashMap<String, Double>() {{
@@ -67,6 +67,9 @@ public class StatsStorage {
             put("dateFrom", 1.0 * getFieldCounter(1) / getNumberOfSearchs());
             put("dateTo", 1.0 * getFieldCounter(2) / getNumberOfSearchs());
         }};
+
+        System.out.println(fields);
+
         this.setFields(fields);
     }
 
