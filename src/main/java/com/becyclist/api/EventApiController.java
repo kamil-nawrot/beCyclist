@@ -64,17 +64,22 @@ public class EventApiController implements EventApi {
     }
 
     @Override
-    public ResponseEntity<Event> getEvent(Long eventId) {
+    public ResponseEntity getEvent(Long eventId) {
         try {
             return ResponseEntity.ok(eventService.findEvent(eventId));
-        }
-        catch (Exception exception) {
+        } catch (Exception exception) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 
-    @Override
     public ResponseEntity<Event> updateEvent(@Valid Event event) {
         return null;
+    }
+
+    public ResponseEntity deleteEvent(@Valid Long eventId) {
+        if (eventService.findEvent(eventId) != null) {
+            Event deletedEvent = eventService.deleteEvent(eventId);
+            return ResponseEntity.ok(deletedEvent);
+        } else return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 }

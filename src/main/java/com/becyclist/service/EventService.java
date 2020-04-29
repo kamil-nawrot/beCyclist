@@ -4,7 +4,6 @@ import com.becyclist.model.Event;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 public interface EventService {
 
@@ -14,4 +13,5 @@ public interface EventService {
 
     Event addEvent(Event body);
 
+    Event deleteEvent(Long eventId);
 }

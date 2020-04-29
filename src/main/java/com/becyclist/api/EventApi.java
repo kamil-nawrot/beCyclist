@@ -2,14 +2,12 @@ package com.becyclist.api;
 
 import com.becyclist.model.Event;
 import io.swagger.annotations.*;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 
-import static org.reflections.Reflections.log;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @Api(value = "event")
@@ -68,5 +66,13 @@ public interface EventApi {
             @ApiResponse(code = 404, message = "Not Found: Requested resource was not found", response = Error.class)})
     @RequestMapping(value = "/events", consumes = {"application/json", "application/xml"}, method = PUT)
     ResponseEntity<Event> updateEvent(@ApiParam(value = "", required = true) @Valid @RequestBody Event event);
+
+    @ApiOperation(value = "Delete event with specific ID", nickname = "deleteEvent", notes = "", tags = {"events"})
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK: Event with given ID deleted"),
+            @ApiResponse(code = 400, message = "Bad Request: Something went wrong", response = Error.class),
+            @ApiResponse(code = 404, message = "Not Found: Requested resource was not found", response = Error.class)})
+    @RequestMapping(value = "/events/{eventId}", produces = {"application/json"}, method = DELETE)
+    ResponseEntity deleteEvent(@ApiParam(value = "", required = true) @PathVariable("eventId") Long eventId);
 
 }
