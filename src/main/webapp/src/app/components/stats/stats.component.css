@@ -9,4 +9,11 @@
   position: absolute;
   right: 0;
   font-weight: 700;
+  text-align: right;
+}
+
+.mat-list-value--percentage {
+  width: 200px;
+  padding: 4px 4px 4px 0;
+  background: #CCCCCC;
 }
