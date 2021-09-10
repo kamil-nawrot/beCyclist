@@ -16,7 +16,7 @@ public class StatsAspect {
 
     StatsStorage statsStorage = StatsStorage.getInstance();
 
-    @After("execution(* com.becyclist.api.EventApiController.addEvent(..))")
+    @Around("execution(* com.becyclist.api.EventApiController.addEvent(..))")
     public void countEvents(ProceedingJoinPoint thisJoinPoint) throws Throwable {
         System.out.println("Event added!");
         statsStorage.increaseNumberOfEvents();
