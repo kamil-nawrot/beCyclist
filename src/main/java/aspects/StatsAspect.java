@@ -16,13 +16,13 @@ public class StatsAspect {
 
     StatsStorage statsStorage = StatsStorage.getInstance();
 
-    @Around("execution(* com.becyclist.api.EventApiController.addEvent(..))")
+    @After("execution(* com.becyclist.api.EventApiController.addEvent(..))")
     public void countEvents(ProceedingJoinPoint thisJoinPoint) throws Throwable {
         System.out.println("Event added!");
         statsStorage.increaseNumberOfEvents();
     }
 
-    @Around("execution(* com.becyclist.api.EventApiController.findAllEvents(..))")
+    @After("execution(* com.becyclist.api.EventApiController.findAllEvents(..))")
     public void allEvents() throws Throwable {
         System.out.println("Search performed!");
         statsStorage.increaseNumberOfSearchs();
